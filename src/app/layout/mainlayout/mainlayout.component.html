@@ -1,0 +1,95 @@
+<!-- SIDABAR NAVIGAITON -->
+<mat-sidenav-container fullscreen autosize>
+    <mat-sidenav mode="side" #sidenav="matSidenav" [(opened)]="opened" fixedInViewport="">
+  
+      <div class="LOGO">LOGO HERE</div>
+  
+      <a [routerLink]="[item.url]" class="menu-button" *ngFor="let item of list" [routerLink]="[item.url]">
+        <span class="material-symbols-outlined">{{item.icon}}</span>
+        <span class="lname">{{item.name}}</span>
+      </a>
+      <mat-divider></mat-divider>
+      <a class="menu-button">
+        <mat-icon>home</mat-icon>
+        <span>CELENDAR</span>
+      </a>
+  
+    </mat-sidenav>
+  
+    <!-- END OF SIDEBAR NAVIGATION -->
+  
+    <!-- TOOLBAR and CONTENT HERE -->
+    <mat-sidenav-content>
+      <!-- TOP NAVIGATION -->
+  
+      <mat-toolbar>
+  
+        <mat-toolbar-row>
+          <!-- LOGO - TITLE & LOGIN HERE -->
+          <span>LOGO</span>
+          <span class="example-spacer"></span>
+          <button mat-button (click)="lazyDialog.openDialog('login')">
+            <mat-icon>login</mat-icon> LOGIN
+          </button>
+          <!-- <button >LOGIN</button> -->
+        </mat-toolbar-row>
+  
+  
+        <mat-toolbar-row>
+  
+          <!-- HAMBURGER ICON -->
+          <button mat-icon-button (click)="sidenav.toggle()"
+            *ngIf="sidenav.mode === 'side'"><mat-icon>menu</mat-icon></button>
+          <button mat-icon-button *ngIf="sidenav.mode === 'over'" (click)="sidenav.toggle()">
+            <mat-icon *ngIf="!sidenav.opened">
+              menu
+            </mat-icon>
+            <mat-icon *ngIf="sidenav.opened">
+              close
+            </mat-icon>
+          </button>
+          <!-- END -->
+  
+          <!--  NAVIGATION -->
+          <span fxFlex>
+          <a mat-button class="top-menu" *ngFor="let item of menuItems"
+          [fxShow]="item.showOnDesktop"
+          [fxShow.xs]="item.showOnMobile"
+          [fxShow.sm]="item.showOnTablet">
+            <!-- <mat-icon class="mr">{{item.icon}}</mat-icon> -->
+            {{item.label}}
+          </a>
+        </span>
+        <ng-container>
+          <button mat-icon-button [matMenuTriggerFor]="dropMenu" class="right" fxHide fxShow.lt-md>
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #dropMenu="matMenu">
+            <ng-container *ngFor="let item of menuItems">
+              <div
+            [fxShow]="!item.showOnDesktop"
+            [fxShow.sm]="!item.showOnTablet"
+            [fxShow.xs]="!item.showOnMobile"
+          >
+              <a mat-menu-item>
+                <!-- <mat-icon class="mr">{{item.icon}}</mat-icon> -->
+                {{item.label}}
+              </a>
+              <mat-divider></mat-divider>
+          </div>
+            </ng-container>
+          </mat-menu>
+        </ng-container>
+         </mat-toolbar-row>
+      </mat-toolbar>
+  
+      <!-- END OF TOP NAVIGATION -->
+  
+  
+      <!-- MAIN CONTENT -->
+      <div class="content" mat-elevation-z4>
+        <router-outlet></router-outlet>
+      </div>
+    </mat-sidenav-content>
+  
+  </mat-sidenav-container>

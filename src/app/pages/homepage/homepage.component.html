@@ -1,0 +1,70 @@
+<!-- CAROUSEL -->
+<div class="info">
+    <mat-card>
+      <ngx-slick-carousel class="homepage" #slickModal="slick-carousel" [config]="slideConfig">
+        <div ngxSlickItem *ngFor="let images of images">
+            <img width="auto" height="500px" [src]="images?.img">
+        </div>
+    </ngx-slick-carousel>
+    </mat-card>
+  </div>
+  <!-- END CAROUSEL -->
+  
+  <div class="container">
+    <div class="main-section">
+  
+      <!-- STATUS -->
+      <div class="status-summary">
+        <div class="status-count" [ngClass]="getStatusClass('New')">
+          <h4>New:</h4> <span>{{ getStatusCount('New') }}</span>
+        </div>
+        <div class="status-count" [ngClass]="getStatusClass('Pending')">
+          <h4>Pending:</h4> <span class="pending">{{ getStatusCount('Pending') }}</span>
+        </div>
+        <div class="status-count" [ngClass]="getStatusClass('Completed')">
+          <h4>Completed:</h4> <span class="completed">{{ getStatusCount('Completed') }}</span>
+        </div>
+      </div>
+      <!-- END OF STATUS -->
+  
+      <div class="table-section">
+        <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+          <ng-container matColumnDef="orderId">
+            <mat-header-cell *matHeaderCellDef> Order ID </mat-header-cell>
+            <mat-cell *matCellDef="let order"> {{ order.orderId }} </mat-cell>
+          </ng-container>
+  
+          <ng-container matColumnDef="customerName">
+            <mat-header-cell *matHeaderCellDef> Customer Name </mat-header-cell>
+            <mat-cell *matCellDef="let order"> {{ order.customerName }} </mat-cell>
+          </ng-container>
+  
+          <ng-container matColumnDef="product">
+            <mat-header-cell *matHeaderCellDef> Product </mat-header-cell>
+            <mat-cell *matCellDef="let order"> {{ order.product }} </mat-cell>
+          </ng-container>
+  
+          <ng-container matColumnDef="status">
+            <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
+            <mat-cell *matCellDef="let order" [ngClass]="getStatusClass(order.status)"> {{ order.status }} </mat-cell>
+          </ng-container>
+  
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+      </div>
+    </div>
+  
+    <!-- RIGHT SECTION -->
+    <div class="right-section">
+      <div class="upcoming-events">
+        CALENDAR
+      </div>
+      <div class="calendar-board">
+        BOARD
+      </div>
+  
+    </div>
+  
+    <!-- END OF RIGHT SECTION -->
+  </div>

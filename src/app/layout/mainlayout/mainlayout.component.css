@@ -1,0 +1,147 @@
+mat-toolbar {
+    background: linear-gradient(90deg, #A4F9FF -25.89%, #020435 168.79%);
+    color: white;
+}
+mat-toolbar-row {
+    min-height: 30px; 
+    height: 30px ;
+  }
+
+mat-sidenav {
+    width: 200px; 
+    border-right: none;
+    background: linear-gradient(180deg, #A4F9FF -8.36%, #020435 119.69%);
+    color: white;
+    text-align: center;
+    /* border-top-right-radius: 10px; */
+    border-bottom-right-radius: 10px;
+    padding: 16px;
+    height: 100%;
+}
+
+.content{
+    border: 1px solid black;
+    height: 100vh;
+    margin: 16px;
+    margin-left: 32px;
+    /* display: flex; */
+    justify-content: center;
+    /* align-items: center; */
+
+    font-size: 1rem;
+
+    border-radius: 10px;
+    overflow: auto;
+}
+
+mat-sidenav-container {
+    height: 100vh;
+    text-align: center;
+}
+
+mat-list-item {
+    /* justify-content: flex-start; */
+    align-items: center;
+    border: 1px solid white;
+    text-align: center;
+
+}
+
+.menu-button {
+    height: 50px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-size: 1rem;
+    border-bottom: 1px solid white;
+    border-image: linear-gradient(45deg, purple, orange) 1;
+    color: #fff;
+    border-radius: 0;
+    text-decoration: none; 
+
+}
+.top-menu{
+    /* border: 1px solid white; */
+    border-radius: 0;
+    margin: 0 0 0 60px;
+    /* margin: auto; */
+    font-size: 15px;
+
+ 
+}
+
+.top-menu:hover {
+    background-color: hsla(240, 70%, 72%, 0.383);
+
+}
+
+
+/* button.right {
+    float: left;
+} */
+
+
+
+a span {
+    padding: 15px;
+}
+mat-icon {
+    margin-right: 100%;
+}
+
+.material-symbols-outlined {
+    transform: scale(1.5);
+}
+
+mat-list-item {
+    width: 100%;
+    
+}
+
+mat-button {
+    transition: none !important;
+    box-shadow: none !important;
+}
+
+
+/* mat-list-item span#icon {
+    float: left;
+    align-items: center;
+    justify-content: flex-start;
+    border: 1px solid white;
+}
+
+mat-list-item span#link {
+  
+    text-align: left;
+    justify-content: flex-start;
+    border: 1px solid white;
+    display: inline-block;
+} */
+
+.example-spacer {
+    flex: 1 1 auto;
+  }
+
+.filler {
+    flex-grow: 1;
+}
+
+@media screen and  (max-width: 1024px) {
+    mat-sidenav{
+        width: 70px;
+    }
+    .material-symbols-outlined{
+        margin:7px;
+
+    }
+    mat-sidenav span.name {
+       display: none;
+    }
+
+    a span {
+        padding: 0;
+    }
+
+}
